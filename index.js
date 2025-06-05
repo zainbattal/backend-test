@@ -61,6 +61,16 @@ app.get("/create", async (req, res) => {
   }
 });
 
+app.delete("/delete", async (req, res) => {
+  try {
+    const result = await pool.query("DELETE FROM names");
+    console.log("names deleted");
+    res.json({ action: "deleted all names" });
+  } catch (error) {
+    res.json({ error: "could not delete names" });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`server started at port: ${PORT}`);
 });
