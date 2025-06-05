@@ -5,9 +5,9 @@ let cors = require("cors");
 const pool = require("./db");
 const PORT = process.env.PORT || 5000;
 
-pp.use(
+app.use(
   cors({
-    origin: "https://deploy-one-lilac.vercel.app",
+    origin: ["https://deploy-one-lilac.vercel.app", "http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
