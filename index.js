@@ -5,7 +5,7 @@ let cors = require("cors");
 const pool = require("./db");
 const PORT = process.env.PORT || 5000;
 
-const query = `CREATE TABLE IF NOT EXISTS users (
+const query = `CREATE TABLE IF NOT EXISTS names (
       id BIGSERIAL PRIMARY KEY,
       name VARCHAR(50)
     );`;
