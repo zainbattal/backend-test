@@ -36,6 +36,15 @@ app.get("/names", async (req, res) => {
   res.json(names.rows);
 });
 
+app.get("/test-db-connection", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT NOW()");
+    res.json({ success: true, time: result.rows[0].now });
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`server started at port: ${PORT}`);
 });
