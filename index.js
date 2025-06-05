@@ -53,9 +53,11 @@ app.get("/test-db-connection", async (req, res) => {
 app.get("/create", async (req, res) => {
   try {
     const result = await pool.query(query);
+    console.log("table created");
     res.send("");
   } catch (error) {
-    console.log(error);
+    console.log("table not created");
+    res.send(error);
   }
 });
 
