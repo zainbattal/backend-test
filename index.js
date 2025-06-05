@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5000;
 
 pp.use(
   cors({
-    origin: ["https://deploy-one-lilac.vercel.app/", "http://localhost:5000"],
+    origin: "https://deploy-one-lilac.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
