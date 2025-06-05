@@ -5,6 +5,11 @@ let cors = require("cors");
 const pool = require("./db");
 const PORT = process.env.PORT || 5000;
 
+const query = `CREATE TABLE IF NOT EXISTS users (
+      id BIGSERIAL PRIMARY KEY,
+      name VARCHAR(50)
+    );`;
+
 app.use(
   cors({
     origin: ["https://deploy-one-lilac.vercel.app", "http://localhost:5173"],
@@ -38,10 +43,19 @@ app.get("/names", async (req, res) => {
 
 app.get("/test-db-connection", async (req, res) => {
   try {
-    const result = await pool.query("SELECT NOW()");
+    const result = await pool.query("CREATE TABLE names");
     res.json({ success: true, time: result.rows[0].now });
   } catch (err) {
     res.send(err);
+  }
+});
+
+app.get("/create", async (req, res) => {
+  try {
+    const result = await pool.query(query);
+    res.send("");
+  } catch (error) {
+    console.log(error);
   }
 });
 
